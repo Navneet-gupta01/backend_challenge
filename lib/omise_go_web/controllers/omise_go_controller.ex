@@ -9,6 +9,7 @@ defmodule OmiseGoWeb.OmiseGoController do
   # end
 
   def format(conn, %{} = a) do
+    IO.inspect(a)
     data = ParentChild.format_data(a)
     # IO.inspect(data)
     render(conn, "index.json", omise_gos: data)

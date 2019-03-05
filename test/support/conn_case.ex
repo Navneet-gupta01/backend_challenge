@@ -26,12 +26,12 @@ defmodule OmiseGoWeb.ConnCase do
     end
   end
 
-  setup tags do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(OmiseGo.Repo)
-
-    unless tags[:async] do
-      Ecto.Adapters.SQL.Sandbox.mode(OmiseGo.Repo, {:shared, self()})
-    end
+  setup _tags do
+    # :ok = Ecto.Adapters.SQL.Sandbox.checkout(OmiseGo.Repo)
+    #
+    # unless tags[:async] do
+    #   Ecto.Adapters.SQL.Sandbox.mode(OmiseGo.Repo, {:shared, self()})
+    # end
 
     {:ok, conn: Phoenix.ConnTest.build_conn()}
   end
