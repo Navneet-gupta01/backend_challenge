@@ -7,7 +7,7 @@
   mix ecto.create
   mix phx.server
 ```
-#To test
+# To test
 ```elixir
   MIX_ENV=test mix deps.get
   mix test
