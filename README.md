@@ -7,7 +7,11 @@
   mix ecto.create
   mix phx.server
 ```
-
+#To test
+```elixir
+  MIX_ENV=test mix deps.get
+  mix test
+```
 
 To start your Phoenix server:
 
