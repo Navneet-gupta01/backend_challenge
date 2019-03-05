@@ -8,7 +8,7 @@
   mix phx.server
 ```
 
-Goto
+# Goto
 ## for challenge 1
 ```
 curl -X POST \
@@ -59,7 +59,6 @@ curl -X POST \
 Open http://localhost:4000/github/1
 
 
-for github changes
 # To test
 ```elixir
   MIX_ENV=test mix deps.get
