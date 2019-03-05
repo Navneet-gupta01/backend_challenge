@@ -28,36 +28,4 @@ defmodule OmiseGoWeb.GithubRepoController do
     end
   end
 
-  #
-  # def show_prev(conn, %{"page" => page}) do
-  #   with {:ok, data} <- GithubRepo.fetch_data(%{"page" => page - 1}) do
-  #     github_resp =
-  #       GithubResp.new(%{
-  #         repos: data["items"],
-  #         totalItems: data["total_count"],
-  #         page: page,
-  #         per_page: 10
-  #       })
-  #
-  #     conn
-  #     |> put_view(OmiseGoWeb.PageView)
-  #     |> render("index.html", data: github_resp)
-  #   end
-  # end
-  #
-  # def show_next(conn, %{"page" => page}) do
-  #   with {:ok, data} <- GithubRepo.fetch_data(%{"page" => page + 1}) do
-  #     github_resp =
-  #       GithubResp.new(%{
-  #         repos: data["items"],
-  #         totalItems: data["total_count"],
-  #         page: page,
-  #         per_page: 10
-  #       })
-  #
-  #     conn
-  #     |> put_view(OmiseGoWeb.PageView)
-  #     |> render("index.html", data: github_resp)
-  #   end
-  # end
 end
