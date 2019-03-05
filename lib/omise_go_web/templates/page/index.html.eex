@@ -1,35 +1,65 @@
 <section class="phx-hero">
   <h1><%= gettext "Welcome to %{name}!", name: "OmiseGo" %></h1>
-  <p>A productive web framework that<br/>does not compromise speed and maintainability.</p>
 </section>
 
 <section class="row">
   <article class="column">
-    <h2>Resources</h2>
-    <ul>
-      <li>
-        <a href="https://hexdocs.pm/phoenix/overview.html">Guides &amp; Docs</a>
-      </li>
-      <li>
-        <a href="https://github.com/phoenixframework/phoenix">Source</a>
-      </li>
-      <li>
-        <a href="https://github.com/phoenixframework/phoenix/blob/v1.4/CHANGELOG.md">v1.4 Changelog</a>
-      </li>
-    </ul>
+    <table style="width:100%">
+      <tr>
+        <th>Repo Id</th>
+        <th>Name</th>
+        <th>Created At</th>
+        <th>URL</th>
+      </tr>
+      <%= for repo <- @data.repos do %>
+        <tr class="collection-item">
+          <td><%= repo["id"] %></td>
+          <td><%= repo["name"] %></td>
+          <td><%= repo["created_at"] %></td>
+          <td><%= link repo["html_url"], to: repo["html_url"] %></td>
+        </tr>
+      <% end %>
+    </table>
   </article>
-  <article class="column">
-    <h2>Help</h2>
-    <ul>
-      <li>
-        <a href="https://elixirforum.com/c/phoenix-forum">Forum</a>
-      </li>
-      <li>
-        <a href="https://webchat.freenode.net/?channels=elixir-lang">#elixir-lang on Freenode IRC</a>
-      </li>
-      <li>
-        <a href="https://twitter.com/elixirphoenix">Twitter @elixirphoenix</a>
-      </li>
-    </ul>
-  </article>
+</section>
+<section class="row">
+  <footer style="margin: 0 auto;">
+    <div class="pagination">
+      <!-- class="prev disabled", -->
+      <%= if @data.page == 1 do %>
+        <%= link("Prev", to: Routes.github_repo_path(@conn, :show_html, @data.page - 1), class: "prev disabled") %>
+      <% end %>
+      <%= if @data.page != 1 do %>
+        <%= link("Prev", to: Routes.github_repo_path(@conn, :show_html, @data.page - 1), class: "prev") %>
+      <% end %>
+
+      <ol>
+        <%= for repo <- 1..min(100, @data.totalItems/@data.per_page) do %>
+          <%= if @data.page == repo do %>
+            <li class="active"><%= link repo,  to: Routes.github_repo_path(@conn, :show_html, repo) %></li>
+          <% end %>
+          <%= if @data.page != repo do %>
+            <li><%= link repo,  to: Routes.github_repo_path(@conn, :show_html, repo) %></li>
+          <% end %>
+        <% end %>
+      </ol>
+      <%= if @data.page == min(100, @data.totalItems/@data.per_page) do %>
+        <%= link( "Next", to: Routes.github_repo_path(@conn, :show_html, @data.page + 1), class: "next disabled") %>
+      <% end %>
+      <%= if @data.page != min(100, @data.totalItems/@data.per_page) do %>
+        <%= link( "Next", to: Routes.github_repo_path(@conn, :show_html, @data.page + 1), class: "next") %>
+      <% end %>
+
+    </div>
+    <!-- <%= if @data.page > 1 do %>
+      <div class="left">
+        <%= link "<<Prev",  to: Routes.github_repo_path(@conn, :show_html, @data.page-1) %>
+      </div>
+    <% end %>
+    <%= if @data.page*@data.per_page < @data.totalItems do %>
+      <div class="right">
+        <%= link "next>>",  to: Routes.github_repo_path(@conn, :show_html, @data.page+1) %>
+      </div>
+    <% end %> -->
+  </footer>
 </section>

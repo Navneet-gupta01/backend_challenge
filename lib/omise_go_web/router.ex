@@ -17,13 +17,13 @@ defmodule OmiseGoWeb.Router do
   scope "/", OmiseGoWeb do
     pipe_through :browser
 
-    get("/github/:page/:per_page", GithubRepoController, :show_html)
+    get("/github/:page", GithubRepoController, :show_html)
   end
 
   scope "/api", OmiseGoWeb do
     pipe_through :api
 
-    get("/github/:page/:per_page", GithubRepoController, :fetch_data)
+    get("/github/:page", GithubRepoController, :fetch_data)
     post("/format", OmiseGoController, :format)
   end
 end

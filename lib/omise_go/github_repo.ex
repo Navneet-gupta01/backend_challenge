@@ -5,7 +5,7 @@ defmodule OmiseGo.GithubRepo do
   def fetch_data(attrs \\ %{}) do
     client = Client.new()
 
-    with {200, %{"items" => items}, _response} <-
+    with {200, data, _response} <-
            client
            |> Search.repositories(
              %{
@@ -16,7 +16,7 @@ defmodule OmiseGo.GithubRepo do
              },
              pagination: :none
            ) do
-      {:ok, items}
+      {:ok, data}
     else
       {_status_code, error, _resp} ->
         {:error, error}
