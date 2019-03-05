@@ -20,7 +20,7 @@ defmodule OmiseGo.MixProject do
   def application do
     [
       mod: {OmiseGo.Application, []},
-      extra_applications: [:logger, :runtime_tools, :tentacat]
+      extra_applications: [:logger, :runtime_tools, :tentacat, :httpoison]
     ]
   end
 
@@ -44,7 +44,8 @@ defmodule OmiseGo.MixProject do
       {:tentacat, "~> 1.0"},
       {:phoenix_html, "~> 2.11"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
-      {:exconstructor, "~> 1.1.0"}
+      {:exconstructor, "~> 1.1.0"},
+      {:httpoison, "~> 1.4"}
     ]
   end
 
