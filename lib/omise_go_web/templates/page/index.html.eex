@@ -27,7 +27,7 @@
     <div class="pagination">
       <!-- class="prev disabled", -->
       <%= if @data.page == 1 do %>
-        <%= link("Prev", to: Routes.github_repo_path(@conn, :show_html, @data.page - 1), class: "prev disabled") %>
+        <%= link("Prev", to: "#", class: "prev disabled") %>
       <% end %>
       <%= if @data.page != 1 do %>
         <%= link("Prev", to: Routes.github_repo_path(@conn, :show_html, @data.page - 1), class: "prev") %>

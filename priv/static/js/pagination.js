@@ -1,4 +1,4 @@
-$(document).ready(function () {
+$(document).ready(function() {
   var CLASS_DISABLED = 'disabled'
   var CLASS_ACTIVE = 'active'
   var CLASS_SIBLING_ACTIVE = 'active-sibling'
@@ -6,21 +6,22 @@ $(document).ready(function () {
 
   $('.pagination').each(initPagination)
 
-  function initPagination () {
+  function initPagination() {
     let $this = $(this)
-
-    $this.data(DATA_KEY, $this.find('li').index('.active'))
+    var indexOfActiveElt = $this.find('li.active')
+    $this.data(DATA_KEY, $this.find('li').index(indexOfActiveElt))
 
     $this.find('.prev').on('click', navigateSinglePage)
     $this.find('.next').on('click', navigateSinglePage)
-    $this.find('li').on('click', function () {
+    $this.find('li').on('click', function() {
       let $parent = $(this).closest('.pagination')
       $parent.data(DATA_KEY, $parent.find('li').index(this))
       changePage.apply($parent)
     })
+    changePage.apply($this)
   }
 
-  function navigateSinglePage () {
+  function navigateSinglePage() {
     if (!$(this).hasClass(CLASS_DISABLED)) {
       let $parent = $(this).closest('.pagination')
       let currActive = parseInt($parent.data('pagination'), 10)
@@ -32,7 +33,7 @@ $(document).ready(function () {
     }
   }
 
-  function changePage (currActive) {
+  function changePage(currActive) {
     let $list = $(this).find('li')
     currActive = parseInt($(this).data(DATA_KEY), 10)
 
