@@ -44,8 +44,7 @@ defmodule OmiseGo.MixProject do
       {:tentacat, "~> 1.0"},
       {:phoenix_html, "~> 2.11"},
       {:phoenix_live_reload, "~> 1.2", only: :dev},
-      {:exconstructor, "~> 1.1.0"},
-      {:httpoison, "~> 1.4"}
+      {:exconstructor, "~> 1.1.0"}
     ]
   end
 
