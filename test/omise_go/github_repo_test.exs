@@ -7,9 +7,9 @@ defmodule OmiseGo.GithubRepoTest do
     @valid_attrs %{"page" => 10, "per_page" => 10}
 
     test "list_repositories/1 should list down searched repository" do
-      {:ok, items} = GithubRepo.fetch_data(@valid_attrs)
+      {:ok, data} = GithubRepo.fetch_data(@valid_attrs)
 
-      assert length(items) == 10
+      assert length(data["items"]) == 10
     end
   end
 end

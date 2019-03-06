@@ -28,8 +28,7 @@
       <!-- class="prev disabled", -->
       <%= if @data.page == 1 do %>
         <%= link("Prev", to: "#", class: "prev disabled") %>
-      <% end %>
-      <%= if @data.page != 1 do %>
+      <% else %>
         <%= link("Prev", to: Routes.github_repo_path(@conn, :show_html, @data.page - 1), class: "prev") %>
       <% end %>
 
@@ -37,29 +36,18 @@
         <%= for repo <- 1..min(100, @data.totalItems/@data.per_page) do %>
           <%= if @data.page == repo do %>
             <li class="active"><%= link repo,  to: Routes.github_repo_path(@conn, :show_html, repo) %></li>
-          <% end %>
-          <%= if @data.page != repo do %>
+          <% else %>
             <li><%= link repo,  to: Routes.github_repo_path(@conn, :show_html, repo) %></li>
           <% end %>
         <% end %>
       </ol>
       <%= if @data.page == min(100, @data.totalItems/@data.per_page) do %>
         <%= link( "Next", to: Routes.github_repo_path(@conn, :show_html, @data.page + 1), class: "next disabled") %>
-      <% end %>
-      <%= if @data.page != min(100, @data.totalItems/@data.per_page) do %>
+      <% else %>
         <%= link( "Next", to: Routes.github_repo_path(@conn, :show_html, @data.page + 1), class: "next") %>
       <% end %>
 
     </div>
-    <!-- <%= if @data.page > 1 do %>
-      <div class="left">
-        <%= link "<<Prev",  to: Routes.github_repo_path(@conn, :show_html, @data.page-1) %>
-      </div>
-    <% end %>
-    <%= if @data.page*@data.per_page < @data.totalItems do %>
-      <div class="right">
-        <%= link "next>>",  to: Routes.github_repo_path(@conn, :show_html, @data.page+1) %>
-      </div>
-    <% end %> -->
+
   </footer>
 </section>
