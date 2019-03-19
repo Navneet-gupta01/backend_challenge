@@ -1,4 +1,4 @@
-# OmiseGo
+# Backend Challenge
 
 # To Run the code
 ```elixir
